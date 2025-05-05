@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { MazeProvider } from '@/context/MazeContext';
 import MazeGrid from '@/components/MazeGrid';

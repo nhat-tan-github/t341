@@ -35,4 +35,3 @@ export class PriorityQueue<T> {
     return this.items.length;
   }
 }
-```

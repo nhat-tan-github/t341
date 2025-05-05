@@ -3,4 +3,3 @@ export enum Algorithm {
   BFS = 'BFS',
   BestFirst = 'Best-First',
 }
-```

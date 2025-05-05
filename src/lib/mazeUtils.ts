@@ -303,4 +303,3 @@ function bestFirstSearch(maze: CellType[][], start: Point, end: Point): PathResu
     // Open set is empty but goal was never reached
     return { path: [], visited: visitedForAnim }; // Return visited even if no path found
 }
-```

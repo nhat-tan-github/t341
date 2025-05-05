@@ -99,4 +99,3 @@ const MazeGrid: React.FC = () => {
 };
 
 export default MazeGrid;
-```

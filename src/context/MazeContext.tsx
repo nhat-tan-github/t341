@@ -250,4 +250,3 @@ export const useMaze = (): MazeContextProps => {
   }
   return context;
 };
-```
