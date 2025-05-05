@@ -8,31 +8,45 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    /* Converted from hex: #ecf0f1 -> HSL(210, 17%, 96%) */
+    --background: 210 17% 96%;
+    /* Converted from hex: #2c3e50 -> HSL(210, 29%, 24%) */
+    --foreground: 210 29% 24%;
+    --card: 210 17% 96%;
+    --card-foreground: 210 29% 24%;
+    --popover: 210 17% 96%;
+    --popover-foreground: 210 29% 24%;
+    /* Converted from hex: #2c3e50 -> HSL(210, 29%, 24%) */
+    --primary: 210 29% 24%;
+    --primary-foreground: 0 0% 98%; /* Keep high contrast */
+    /* Use a slightly darker gray for secondary elements */
+    --secondary: 210 15% 90%;
+    --secondary-foreground: 210 29% 24%;
+    --muted: 210 15% 90%;
+    --muted-foreground: 210 20% 45%; /* Adjusted for readability */
+    /* Converted from hex: #f1c40f -> HSL(45, 88%, 50%) */
+    --accent: 45 88% 50%;
+    --accent-foreground: 210 29% 24%; /* Dark text on gold */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 210 15% 88%; /* Adjusted border */
+    --input: 210 15% 88%;
+    --ring: 210 29% 24%; /* Use primary for ring */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Custom maze colors */
+    --maze-wall: 210 29% 24%; /* Dark Blue */
+    --maze-path: 210 17% 96%; /* Light Gray (same as background) */
+    --maze-start: 120 61% 50%; /* Green for start */
+    --maze-end: 45 88% 50%; /* Gold for treasure */
+    --maze-visited: 210 50% 70%; /* Lighter blue for visited */
+    --maze-solution: 45 88% 50%; /* Gold for solution path */
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -43,30 +57,40 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Dark mode theme can be adjusted later if needed */
+    --background: 210 29% 10%; /* Darker blue */
+    --foreground: 210 17% 90%; /* Lighter gray */
+    --card: 210 29% 10%;
+    --card-foreground: 210 17% 90%;
+    --popover: 210 29% 10%;
+    --popover-foreground: 210 17% 90%;
+    --primary: 210 17% 90%; /* Light gray for primary in dark */
+    --primary-foreground: 210 29% 10%; /* Dark blue text */
+    --secondary: 210 25% 20%; /* Darker secondary */
+    --secondary-foreground: 210 17% 90%;
+    --muted: 210 25% 20%;
+    --muted-foreground: 210 15% 60%;
+    --accent: 45 88% 50%; /* Gold remains the same */
+    --accent-foreground: 210 29% 10%; /* Dark text on gold */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 210 25% 25%;
+    --input: 210 25% 25%;
+    --ring: 45 88% 50%; /* Gold for ring in dark */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Custom maze colors for dark mode */
+    --maze-wall: 210 17% 90%; /* Light Gray for walls */
+    --maze-path: 210 29% 10%; /* Dark Blue for path (background) */
+    --maze-start: 120 61% 60%; /* Brighter Green */
+    --maze-end: 45 88% 60%; /* Brighter Gold */
+    --maze-visited: 210 40% 40%; /* Dimmer blue */
+    --maze-solution: 45 88% 60%; /* Brighter Gold for solution path */
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -84,5 +108,54 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Add specific styles for maze cells */
+@layer components {
+  .maze-cell {
+    @apply w-5 h-5 transition-colors duration-100 ease-in-out flex items-center justify-center;
+  }
+  .maze-cell-wall {
+    @apply bg-[hsl(var(--maze-wall))];
+  }
+  .maze-cell-path {
+    @apply bg-[hsl(var(--maze-path))];
+  }
+  .maze-cell-start {
+    @apply bg-[hsl(var(--maze-start))];
+  }
+  .maze-cell-end {
+    @apply bg-[hsl(var(--maze-end))];
+  }
+  .maze-cell-visited {
+    @apply bg-[hsl(var(--maze-visited))] animate-pulse-fast;
+  }
+  .maze-cell-solution {
+    @apply bg-[hsl(var(--maze-solution))] animate-pulse-slow;
+  }
+  .maze-icon {
+      @apply w-4 h-4;
+      color: hsl(var(--primary-foreground)); /* Ensure icon is visible on start/end cells */
+  }
+  .treasure-icon {
+      @apply w-4 h-4;
+      color: hsl(var(--accent-foreground)); /* Ensure icon is visible on treasure cell */
+  }
+
+  @keyframes pulse-fast {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .6; }
+  }
+  .animate-pulse-fast {
+    animation: pulse-fast 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+   @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
