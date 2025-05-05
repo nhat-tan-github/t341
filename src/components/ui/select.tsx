@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -15,7 +16,7 @@ const SelectValue = SelectPrimitive.Value
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+>(({ className, children, placeholder = "Chọn một giá trị", ...props }, ref) => ( // Add Vietnamese default placeholder
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
@@ -24,7 +25,7 @@ const SelectTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children}
+    {children ?? <span className="text-muted-foreground">{placeholder}</span>} {/* Display placeholder if no children */}
     <SelectPrimitive.Icon asChild>
       <ChevronDown className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>

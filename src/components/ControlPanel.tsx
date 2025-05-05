@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -37,7 +38,7 @@ const ControlPanel: React.FC = () => {
     <div className="flex flex-col space-y-6 h-full">
       <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
         <Zap className="w-6 h-6 text-accent" />
-        Maze Explorer
+        Khám Phá Mê Cung
       </h1>
 
       <Separator />
@@ -45,7 +46,7 @@ const ControlPanel: React.FC = () => {
       <div className="space-y-2">
         <Label htmlFor="algorithm-select" className="flex items-center gap-2">
           <Settings className="w-4 h-4" />
-          Pathfinding Algorithm
+          Thuật Toán Tìm Đường
         </Label>
         <Select
           value={selectedAlgorithm}
@@ -53,23 +54,23 @@ const ControlPanel: React.FC = () => {
           disabled={isVisualizing || isGenerating}
         >
           <SelectTrigger id="algorithm-select" className="w-full">
-            <SelectValue placeholder="Select Algorithm" />
+            <SelectValue placeholder="Chọn thuật toán" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={Algorithm.AStar}>A* Search</SelectItem>
-            <SelectItem value={Algorithm.BFS}>Breadth-First Search (BFS)</SelectItem>
-            <SelectItem value={Algorithm.BestFirst}>Best-First Search</SelectItem>
+            <SelectItem value={Algorithm.AStar}>Tìm Kiếm A*</SelectItem>
+            <SelectItem value={Algorithm.BFS}>Tìm Kiếm Theo Chiều Rộng (BFS)</SelectItem>
+            <SelectItem value={Algorithm.BestFirst}>Tìm Kiếm Best-First</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div className="space-y-4">
         <Label className="flex items-center gap-2">
-            <Settings className="w-4 h-4" /> Maze Dimensions
+            <Settings className="w-4 h-4" /> Kích Thước Mê Cung
         </Label>
          <div className="space-y-2">
            <div className="flex justify-between text-sm text-muted-foreground">
-            <span>Rows: {rows}</span>
+            <span>Số hàng: {rows}</span>
            </div>
            <Slider
              value={[rows]}
@@ -78,12 +79,12 @@ const ControlPanel: React.FC = () => {
              max={50}
              step={1}
              disabled={isVisualizing || isGenerating}
-             aria-label="Maze Rows"
+             aria-label="Số hàng mê cung"
            />
          </div>
          <div className="space-y-2">
            <div className="flex justify-between text-sm text-muted-foreground">
-              <span>Columns: {cols}</span>
+              <span>Số cột: {cols}</span>
            </div>
            <Slider
              value={[cols]}
@@ -92,7 +93,7 @@ const ControlPanel: React.FC = () => {
              max={50}
              step={1}
              disabled={isVisualizing || isGenerating}
-             aria-label="Maze Columns"
+             aria-label="Số cột mê cung"
            />
          </div>
           <Button
@@ -102,7 +103,7 @@ const ControlPanel: React.FC = () => {
               variant="secondary"
           >
               <RefreshCw className="mr-2 h-4 w-4" />
-              {isGenerating ? 'Generating...' : 'Generate New Maze'}
+              {isGenerating ? 'Đang tạo...' : 'Tạo Mê Cung Mới'}
           </Button>
       </div>
 
@@ -111,7 +112,7 @@ const ControlPanel: React.FC = () => {
 
       <div className="space-y-2">
         <Label htmlFor="speed-slider" className="flex items-center gap-2">
-          <Settings className="w-4 h-4" /> Visualization Speed
+          <Settings className="w-4 h-4" /> Tốc Độ Hiển Thị
         </Label>
         <Slider
           id="speed-slider"
@@ -121,11 +122,11 @@ const ControlPanel: React.FC = () => {
           max={200} // Slower (ms delay)
           step={10}
           disabled={isVisualizing || isGenerating}
-          aria-label="Visualization Speed"
+          aria-label="Tốc độ hiển thị"
         />
          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Fast</span>
-            <span>Slow</span>
+            <span>Nhanh</span>
+            <span>Chậm</span>
           </div>
       </div>
 
@@ -139,7 +140,7 @@ const ControlPanel: React.FC = () => {
            className="w-full"
          >
            <Play className="mr-2 h-4 w-4" />
-           Start Visualization
+           Bắt Đầu Hiển Thị
          </Button>
          <Button
            onClick={resetVisualization}
@@ -148,7 +149,7 @@ const ControlPanel: React.FC = () => {
            className="w-full"
          >
            <Square className="mr-2 h-4 w-4" />
-           Reset
+           Đặt Lại
          </Button>
        </div>
     </div>

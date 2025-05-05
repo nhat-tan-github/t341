@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, {
@@ -102,10 +103,10 @@ export const MazeProvider: React.FC<{ children: ReactNode }> = ({
        }
 
     } catch (error) {
-      console.error("Error generating maze:", error);
+      console.error("Lỗi tạo mê cung:", error);
       toast({
-        title: "Maze Generation Failed",
-        description: "Could not generate the maze. Please try again.",
+        title: "Tạo Mê Cung Thất Bại",
+        description: "Không thể tạo mê cung. Vui lòng thử lại.",
         variant: "destructive",
       });
        // Generate a simple fallback maze? Or leave it null?
@@ -170,8 +171,8 @@ export const MazeProvider: React.FC<{ children: ReactNode }> = ({
 
     if (!result || result.path.length === 0) {
       toast({
-        title: "Pathfinding Failed",
-        description: "No path found to the treasure.",
+        title: "Tìm Đường Thất Bại",
+        description: "Không tìm thấy đường đến kho báu.",
         variant: "destructive",
       });
       // Animate visited cells even if no path is found
@@ -191,8 +192,8 @@ export const MazeProvider: React.FC<{ children: ReactNode }> = ({
       animateSteps(result.path, true, () => {
         setIsVisualizing(false); // Visualization complete
         toast({
-            title: "Treasure Found!",
-            description: `Path found using ${selectedAlgorithm}. Length: ${result.path.length}`,
+            title: "Đã Tìm Thấy Kho Báu!",
+            description: `Đường đi được tìm thấy bằng ${selectedAlgorithm}. Độ dài: ${result.path.length}`,
         })
       });
     });
@@ -246,7 +247,7 @@ export const MazeProvider: React.FC<{ children: ReactNode }> = ({
 export const useMaze = (): MazeContextProps => {
   const context = useContext(MazeContext);
   if (!context) {
-    throw new Error('useMaze must be used within a MazeProvider');
+    throw new Error('useMaze phải được sử dụng trong MazeProvider');
   }
   return context;
 };

@@ -1,22 +1,15 @@
 
 import type {Metadata} from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"; // Import Toaster
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
-  title: 'Maze Explorer', // Update default title
-  description: 'Visualize pathfinding algorithms in a maze.', // Update description
+  title: 'Khám Phá Mê Cung', // Update default title to Vietnamese
+  description: 'Hiển thị thuật toán tìm đường trong mê cung.', // Update description to Vietnamese
 };
 
 export default function RootLayout({
@@ -25,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+    <html lang="vi"> {/* Change language to Vietnamese */}
+      <body className={`${inter.className} antialiased bg-background text-foreground`}>
         {children}
         <Toaster /> {/* Add Toaster here */}
       </body>

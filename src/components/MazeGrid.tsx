@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -25,7 +26,7 @@ const MazeGrid: React.FC = () => {
   if (!maze || maze.length === 0 || maze[0].length === 0) {
     return (
       <div className="text-center text-muted-foreground">
-        Generating maze...
+        Đang tạo mê cung...
       </div>
     );
   }
@@ -49,12 +50,26 @@ const MazeGrid: React.FC = () => {
      return 'maze-cell-path';
    };
 
+   // Helper function to translate CellType enum to Vietnamese string
+   const getCellTypeVietnamese = (cellType: CellType): string => {
+      switch (cellType) {
+          case CellType.Path: return "Đường đi";
+          case CellType.Wall: return "Tường";
+          case CellType.Start: return "Bắt đầu"; // Technically handled by icon
+          case CellType.End: return "Kết thúc"; // Technically handled by icon
+          case CellType.Visited: return "Đã thăm";
+          case CellType.Solution: return "Đường giải";
+          default: return "Không xác định";
+      }
+   }
+
+
    const getCellContent = (row: number, col: number) => {
      if (row === start.row && col === start.col) {
-       return <Play className="maze-icon" aria-label="Start" />;
+       return <Play className="maze-icon" aria-label="Bắt đầu" />;
      }
      if (row === end.row && col === end.col) {
-       return <Star className="treasure-icon" aria-label="Treasure" />;
+       return <Star className="treasure-icon" aria-label="Kho báu" />;
      }
      return null;
    };
@@ -72,13 +87,25 @@ const MazeGrid: React.FC = () => {
         maxHeight: '80vh',
       }}
       role="grid"
-      aria-label="Maze Grid"
+      aria-label="Lưới Mê Cung"
     >
       {maze.map((row, rowIndex) =>
         row.map((cell, colIndex) => {
           const cellKey = `${rowIndex}-${colIndex}`;
           const isCurrentVisited = isVisualizing && visitedCells.has(cellKey);
           const cellClass = getCellClass(rowIndex, colIndex, cell);
+          const cellTypeVietnamese = getCellTypeVietnamese(cell);
+          let ariaLabel = `Ô ${rowIndex}, ${colIndex}: ${cellTypeVietnamese}`;
+           if (rowIndex === start.row && colIndex === start.col) {
+               ariaLabel = `Ô ${rowIndex}, ${colIndex}: Bắt đầu`;
+           } else if (rowIndex === end.row && colIndex === end.col) {
+               ariaLabel = `Ô ${rowIndex}, ${colIndex}: Kho báu (Kết thúc)`;
+           } else if (solutionPath.has(cellKey)) {
+               ariaLabel = `Ô ${rowIndex}, ${colIndex}: Phần của đường giải`;
+           } else if (visitedCells.has(cellKey)) {
+               ariaLabel = `Ô ${rowIndex}, ${colIndex}: Đã thăm`;
+           }
+
 
           return (
             <div
@@ -87,7 +114,7 @@ const MazeGrid: React.FC = () => {
                 isCurrentVisited ? 'maze-cell-visited' : ''
               }`}
               role="gridcell"
-              aria-label={`Cell ${rowIndex}, ${colIndex}: ${CellType[cell]}`}
+              aria-label={ariaLabel}
             >
               {getCellContent(rowIndex, colIndex)}
             </div>

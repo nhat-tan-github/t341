@@ -6,8 +6,8 @@ import ControlPanel from '@/components/ControlPanel';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Maze Explorer',
-  description: 'Visualize pathfinding algorithms in a maze.',
+  title: 'Khám Phá Mê Cung', // Update title to Vietnamese
+  description: 'Hiển thị thuật toán tìm đường trong mê cung.', // Update description to Vietnamese
 };
 
 export default function Home() {
